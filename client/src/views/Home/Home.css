@@ -1,0 +1,12 @@
+.container{
+  background-image: url("../../img/wallpaperflare.jpg");
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 20px;
+  }
+  
