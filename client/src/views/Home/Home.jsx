@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Footer } from "../index";
 import { getCountries } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import Card from "../../components/Card/Card";
+import Cards from "../../components/Cards/Cards";
 import './Home.css'
 
 const Home = () => {
@@ -25,6 +25,7 @@ const Home = () => {
   const countriesPerPage = 10;
   const indexLastCoutnry = currentPage * countriesPerPage;
   const indexFirstCountry = indexLastCoutnry - countriesPerPage;
+  
   const currentCountries = countries.slice(indexFirstCountry, indexLastCoutnry);
 
   return (
@@ -43,14 +44,13 @@ const Home = () => {
       <div className='card-container' >
         {currentCountries.map((country, index) => {
           return (
-            <Card
+            <Cards
               key={index}
               id={country.id}
               image={country.flags}
               name={country.name}
               continent={country.continents}
               capital={country.capital}
-              population={country.population}
             />
           );
         })}

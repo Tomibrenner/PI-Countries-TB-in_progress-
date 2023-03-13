@@ -34,6 +34,8 @@ export const getActivities = () => {
   };
 };
 
+
+
 export const getCountryByName = (name) => {
   return (dispatch) => {
     fetch(`http://localhost:3001/countries?name=${name}`)

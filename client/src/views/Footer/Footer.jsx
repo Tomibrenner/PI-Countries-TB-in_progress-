@@ -1,14 +1,14 @@
 import React from "react";
-import style from "./Footer.module.css";
+import "./Footer.css";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer>
-      <div className={style.message}>
+      <div className="message">
         <p>Created by Tomas Brenner</p>
       </div>
-      <div className={style.links}>
+      <div className="links">
         <a
           href="https://www.linkedin.com/in/tomasbrenner/"
           target="_blank"

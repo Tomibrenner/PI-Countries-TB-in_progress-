@@ -1,0 +1,49 @@
+.detail-container{
+    background-image: url("../../img/wallpaperflare.jpg");
+    background-size: cover;
+    background-position: center;
+    color: rgb(253, 252, 252);
+  }
+  
+
+.detail-back-button {
+  background-color: black;
+  color: black !important ;
+  border-radius: 10px;
+  padding: 10px 20px;
+  display: inline-block;
+  width: auto;
+  min-width: 100px;
+}
+
+.detail-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.detail-card-container > div {
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(47, 46, 46, 0.8);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.detail-card-container > div img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.activities {
+  margin-top: 20px;
+}
+
+.activities h2 {
+  margin-bottom: 10px;
+}
+
+.activities div {
+  margin-bottom: 10px;
+}

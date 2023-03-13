@@ -1,4 +1,4 @@
-.container {
+.LanContainer {
   background-image: url("../../img/wallpaperflare.com_wallpaper.jpg");
   background-size: cover;
   background-position: center;
@@ -34,7 +34,7 @@ a:hover{
     opacity: 70%;
 }
 
-.button{
+.seeButton{
     background-color: rgb(242, 209, 22);
     border-radius: 10px;
     color: rgb(0, 0, 0);
@@ -42,7 +42,7 @@ a:hover{
     font-weight: bold;
 }
 
-.button:hover{
+.seeButton:hover{
   font-size: 33px;
   opacity: 90%;
 }
