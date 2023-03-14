@@ -6,6 +6,7 @@ import {
   FILTER_BY_ACTIVITY,
   ORDER_BY_NAME,
   ORDER_BY_POPULATION,
+  RESET_FILTERS,
 } from "./types";
 
 const initialState = {
@@ -42,7 +43,7 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_BY_CONTINENT:
       const continent = action.payload;
       const filteredCoutries = state.allCountries.filter(
-        (country) => country.continent === continent
+        (country) => country.continents === continent
       );
 
       return {
@@ -52,9 +53,10 @@ const rootReducer = (state = initialState, action) => {
 
     case FILTER_BY_ACTIVITY:
       const activity = action.payload;
-      const filteredActivities = state.allCountries.filter((country) =>
-        country.activities.filter((activ) => activ.name === activity)
-      );
+      const activityCountry = [...state.allCountries];
+      const filteredActivities = activityCountry.filter((country) => {
+        return country.activities.find((activ) => activ.name === activity);
+      });
 
       return {
         ...state,
@@ -62,18 +64,17 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ORDER_BY_NAME:
-      const orderName = action.payload;
+      const order = action.payload;
       let orderedCountries;
-      if (orderName === "A-Z") {
-        orderedCountries = state.countries.sort((a, b) =>
-          a.name.localCompare(b.name)
+      const originalCountries = [...state.countries];
+      if (order === "asc") {
+        orderedCountries = originalCountries.sort((a, b) =>
+          a.name.localeCompare(b.name)
         );
-      } else if (orderName === "Z-A") {
-        orderedCountries = state.countries.sort((a, b) =>
-          b.name.localCompare(a.name)
+      } else if (order === "desc") {
+        orderedCountries = originalCountries.sort((a, b) =>
+          b.name.localeCompare(a.name)
         );
-      } else {
-        orderedCountries = state.allCountries;
       }
 
       return {
@@ -83,22 +84,24 @@ const rootReducer = (state = initialState, action) => {
 
     case ORDER_BY_POPULATION:
       const orderPop = action.payload;
+      const originalPop = [...state.countries];
       let orderedPop;
-      if (orderPop === "Max-Min") {
-        orderedPop = state.countries.sort((a, b) =>
-          a.population.localCompare(b.population)
-        );
-      } else if (orderPop === "Min-Max") {
-        orderedPop = state.countries.sort((a, b) =>
-          b.population.localCompare(a.population)
-        );
-      } else {
-        orderedPop = state.allCountries;
+      if (orderPop === "Min-Max") {
+        orderedPop = originalPop.sort((a, b) => a.population - b.population);
+      } else if (orderPop === "Max-Min") {
+        orderedPop = originalPop.sort((a, b) => b.population - a.population);
       }
 
       return {
         ...state,
         countries: orderedPop,
+      };
+
+    case RESET_FILTERS:
+      return {
+        ...state,
+        allCountries: action.payload,
+        countries: action.payload,
       };
 
     default:

@@ -1,12 +1,45 @@
-.container{
+.container {
   background-image: url("../../img/wallpaperflare.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 130vh;
+  width: 100%;
+  padding-bottom: 10px;
 }
 
+
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 50px;
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.card-container p {
+  color: white;
+  font-size: xx-large;
+}
+
+.button{
+  display: flex;
+  justify-content:center;
+  gap: 10px;
+}
+
+.button p{
+  color: white;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}

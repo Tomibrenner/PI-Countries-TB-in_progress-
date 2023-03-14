@@ -6,6 +6,7 @@ import {
   FILTER_BY_ACTIVITY,
   ORDER_BY_NAME,
   ORDER_BY_POPULATION,
+  RESET_FILTERS,
 } from "./types";
 
 export const getCountries = () => {
@@ -34,8 +35,6 @@ export const getActivities = () => {
   };
 };
 
-
-
 export const getCountryByName = (name) => {
   return (dispatch) => {
     fetch(`http://localhost:3001/countries?name=${name}`)
@@ -44,7 +43,7 @@ export const getCountryByName = (name) => {
   };
 };
 
-export const fliterByContinent = (continent) => {
+export const filterByContinent = (continent) => {
   return {
     type: FILTER_BY_CONTINENT,
     payload: continent,
@@ -58,10 +57,10 @@ export const filterByActivity = (activity) => {
   };
 };
 
-export const orderByName = (name) => {
+export const orderByName = (payload) => {
   return {
     type: ORDER_BY_NAME,
-    payload: name,
+    payload,
   };
 };
 
@@ -71,3 +70,12 @@ export const orderByPopulation = (population) => {
     payload: population,
   };
 };
+
+export const resetFilter = () => {
+  return (dispatch) => {
+    fetch("http://localhost:3001/countries")
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: RESET_FILTERS, payload: data }));
+  };
+};
+ 
