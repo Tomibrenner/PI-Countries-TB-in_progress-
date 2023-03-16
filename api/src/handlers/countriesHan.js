@@ -1,6 +1,3 @@
-const { Country, Activity } = require("../db");
-
-
 const {
   getAllCountries,
   getCountryByName,
@@ -32,19 +29,21 @@ const getAllCountriesHandler = async (req, res) => {
   }
  };
 
-module.exports = { getAllCountriesHandler, getCountryIdHandler };
+//   const {
+//    countryDB
+//  } = require('../api_db/countryDB')
 
-// const {
-//   countryDB
-// } = require('../api_db/countryDB')
+//  const apiToDB = async (req, res) => {
+//    const result = await countryDB();
+//    try {
+//      res.status(200).json(result);
+//    } catch (error) {
+//      res.status(400).json({ message: error.message });
+//    }
+//  };      apiToDB
 
-// const apiToDB = async (req, res) => {
-//   const result = await countryDB();
-//   try {
-//     res.status(200).json(result);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// };
+module.exports = { getAllCountriesHandler, getCountryIdHandler, };
 
-// module.exports={apiToDB}
+
+
+ 

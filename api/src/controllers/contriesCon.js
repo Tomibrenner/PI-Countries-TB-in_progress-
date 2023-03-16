@@ -8,7 +8,7 @@ const getAllCountries = async () => {
 const getCountryByName = async (name) => {
   return (modelDB = await Country.findAll({
     where: { name: { [Op.iLike]: `${name}%` } },
-    include: Activity,
+    include: [{ model: Activity, through: { attributes: [] } }],
     order: [["name", "ASC"]],
   }));
 };

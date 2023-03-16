@@ -7,6 +7,7 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_POPULATION,
   RESET_FILTERS,
+  REMOVE_ACTIVITY
 } from "./types";
 
 const initialState = {
@@ -104,9 +105,21 @@ const rootReducer = (state = initialState, action) => {
         countries: action.payload,
       };
 
+      case REMOVE_ACTIVITY:
+      const updatedActivities = state.activities.filter(
+        (activity) => activity.id !== action.payload
+        
+      );
+      console.log(action.payload);
+      console.log(updatedActivities);
+      return {
+        ...state,
+        activities: updatedActivities,
+      };
+ 
     default:
       return { ...state };
   }
 };
-
+ 
 export default rootReducer;

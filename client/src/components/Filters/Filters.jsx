@@ -8,6 +8,7 @@ import {
   getActivities,
   filterByActivity,
 } from "../../redux/actions";
+import './Filters.css'
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -63,8 +64,12 @@ const Filters = () => {
   };
 
   return (
-    <div>
-      <select value={selectedContinent} onChange={handleSelectFilter}>
+    <div className="filter-container">
+      <select
+        value={selectedContinent}
+        onChange={handleSelectFilter}
+        className="filter-select"
+      >
         <option value="0">Filter by Continet</option>
         <option value="Africa">Africa</option>
         <option value="Antarctica">Antarctica</option>
@@ -75,7 +80,11 @@ const Filters = () => {
         <option value="South America">South America</option>
       </select>
 
-      <select value={orderName} onChange={hadleSelectName}>
+      <select
+        value={orderName}
+        onChange={hadleSelectName}
+        className="filter-select"
+      >
         <option value="0">Order By</option>
         <option value="asc">A-Z</option>
         <option value="desc">Z-A</option>
@@ -83,7 +92,7 @@ const Filters = () => {
         <option value="Max-Min">Max to Min Population</option>
       </select>
 
-      <select value={orderActivity} onChange={handleSelectActivity}>
+      <select value={orderActivity} onChange={handleSelectActivity} className="filter-select">
         <option value="0">Filter by Activity</option>
         {activities.map((activ) => {
           return (

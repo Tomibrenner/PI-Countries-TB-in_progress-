@@ -15,7 +15,6 @@ const createActivity = async (
   season,
   countries
 ) => {
-  const upperCaseCountries = countries.map(country => country.toUpperCase());
   const prevActivity = await Activity.findAll({
     where: {
       name: {
@@ -24,35 +23,36 @@ const createActivity = async (
     },
   });
 
-  if (prevActivity.length) return `Activity "${name}" already exists`
+  if (prevActivity.length) return `Activity "${name}" already exists`;
 
   const activity = await Activity.create({
     name: name
       .split(" ")
-      .map(str => str[ 0 ].toUpperCase() + str.slice(1).toLowerCase()).join(""),
+      .map((str) => str[0].toUpperCase() + str.slice(1).toLowerCase())
+      .join(""),
     difficulty,
     duration,
-    season:season
-    .split(" ")
-    .map((string) => string[0].toUpperCase() + string.slice(1).toLowerCase())
-    .join(""),
-  })
+    season: Array.isArray(season) ? season : [season],
+  });
+
+  const upperCaseCountries = countries.map((country) => country.toUpperCase());
 
   const countryMatch = await Country.findAll({
-    where:{
-      id: upperCaseCountries
-    }
-  })
-  
+    where: {
+      id: upperCaseCountries,
+    },
+  });
+
   countryMatch.forEach(async (coun) => {
     const country = await Country.findByPk(coun.id);
-    if (country) await country.addActivities(activity)
+    if (country) await country.addActivities(activity);
   });
+
   const newActivity = await Activity.findByPk(activity.id, {
     include: [{ model: Country, through: { attributes: [] } }],
   });
 
-  return newActivity
+  return newActivity;
 };
 
 const deleteActivity = async (id) => {

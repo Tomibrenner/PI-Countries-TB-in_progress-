@@ -8,7 +8,7 @@ const {
 } = require("../handlers/activitiesHan");
 
 router.get("/", getActivitiesHandler);
-router.post("/", createActivityHandler);
+router.post("/activity", createActivityHandler);
 router.delete("/:id/delete", deleteActivityHandler);
 
 module.exports = router;

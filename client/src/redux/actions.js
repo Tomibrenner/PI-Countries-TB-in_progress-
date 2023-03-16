@@ -7,7 +7,9 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_POPULATION,
   RESET_FILTERS,
+  REMOVE_ACTIVITY,
 } from "./types";
+import axios from "axios";
 
 export const getCountries = () => {
   return (dispatch) => {
@@ -76,6 +78,19 @@ export const resetFilter = () => {
     fetch("http://localhost:3001/countries")
       .then((res) => res.json())
       .then((data) => dispatch({ type: RESET_FILTERS, payload: data }));
+  };
+};
+
+export const removeActivity = (activityId) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:3001/activities/${activityId}/delete`
+      );
+      return dispatch({ type: REMOVE_ACTIVITY, payload: data });
+    } catch (error) {
+      return dispatch({ type: REMOVE_ACTIVITY, payload: [], error });
+    }
   };
 };
  

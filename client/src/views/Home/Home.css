@@ -43,3 +43,20 @@
   margin-top: 0px;
   margin-bottom: 20px;
 }
+
+.create-activity-link {
+  margin-left: auto;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.filters-container {
+  margin: 0 auto;
+  max-width: 500px; 
+  margin-bottom: 30px;
+}
+
+

@@ -4,7 +4,7 @@ import './Landing.css'
 
 const Landing=()=> {
   return (
-    <section className='LanContainer' >
+    <section className='Lan-Container' >
       <h1>Welcome to Henry Countries</h1>
       <h3>PI by 
         <a  href='https://www.linkedin.com/in/tomasbrenner/' target='_blank' rel='noreferrer' > Tomas Brenner.</a>

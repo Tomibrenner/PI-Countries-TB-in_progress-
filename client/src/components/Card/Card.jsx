@@ -1,5 +1,8 @@
 import React from "react";
+import { FaTrashAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import "./Card.css";
+import { removeActivity } from "../../redux/actions";
 
 const Card = ({
   name,
@@ -11,6 +14,18 @@ const Card = ({
   population,
   activities,
 }) => {
+  const dispatch = useDispatch();
+
+  const handleDeleteActivity = (activityId) => {
+    const answer = window.confirm(
+      "Do you really want to delete this activity?"
+    );
+    if (answer) {
+      dispatch(removeActivity(activityId));
+       setTimeout(() => window.location.reload(), 1000);
+    }
+  };
+
   return (
     <div className="card-container">
       <div className="card-image">
@@ -55,8 +70,11 @@ const Card = ({
                   <strong>Duration:</strong> {activity.duration}
                 </p>
                 <p>
-                  <strong>Season:</strong> {activity.season}
+                  <strong>Season:</strong> {activity.season.join(", ")}
                 </p>
+                <button onClick={() => handleDeleteActivity(activity.id)}>
+                  <FaTrashAlt />
+                </button>
               </div>
             ))}
           </div>

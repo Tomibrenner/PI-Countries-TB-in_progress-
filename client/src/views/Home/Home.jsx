@@ -6,6 +6,7 @@ import Cards from "../../components/Cards/Cards";
 import "./Home.css";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Filters from "../../components/Filters/Filters";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -44,11 +45,14 @@ const Home = () => {
 
   return (
     <div className="container">
-      <div className="search-container">
-        <SearchBar />
-      </div>
-      <div>
-        <Filters />
+    <div className="button-container">
+      <Link to='/activities' className="create-activity-link">Create Activity</Link>
+    </div>
+    <div className="search-container">
+      <SearchBar />
+    </div>
+    <div className="filters-container">
+      <Filters />
       </div>
       <div className="button">
         <button disabled={currentPage === 1} onClick={handleFirstPage}>
@@ -91,9 +95,11 @@ const Home = () => {
           <p>Country doesn't exist</p>
         )}
       </div>
-      <div>
+      <footer>
         <Footer />
-      </div>
+      </footer>
+        
+      
     </div>
   );
 };

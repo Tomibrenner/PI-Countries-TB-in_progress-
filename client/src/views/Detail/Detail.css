@@ -1,21 +1,25 @@
 .detail-container{
-    background-image: url("../../img/wallpaperflare.jpg");
-    background-size: cover;
-    background-position: center;
-    color: rgb(253, 252, 252);
-  }
-  
+  background-image: url("../../img/wallpaperflare.jpg");
+  background-size: cover;
+  background-position: center;
+  color: rgb(253, 252, 252);
+}
 
 .detail-back-button {
   background-color: black;
-  color: black !important ;
+  color: white  ;
   border-radius: 10px;
   padding: 10px 20px;
-  display: inline-block;
+  display: flex;
+  justify-content: space-around;
   width: auto;
   min-width: 100px;
 }
 
+.create-activity-link {
+  color: white;
+  margin-left: auto;
+}
 .detail-card-container {
   display: flex;
   flex-wrap: wrap;

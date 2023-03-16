@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
-import './Detail.css'
+import "./Detail.css";
 
 const Detail = () => {
   const { id } = useParams();
@@ -17,7 +17,11 @@ const Detail = () => {
     <div className="detail-container">
       <div className="detail-back-button">
         <Link to="/home">Back to Home</Link>
+        <div className="create-activity-link">
+          <Link to="/activities">Create Activity</Link>
+        </div>
       </div>
+
       <div className="detail-card-container">
         {
           <Card
